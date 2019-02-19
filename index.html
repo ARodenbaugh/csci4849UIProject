@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+<!-- Sources used: How-To-Range-Sliders: https://www.w3schools.com/howto/howto_js_rangeslider.asp
+Responsive Design: https://www.w3schools.com/html/html_responsive.asp
+-->
+
+<h2>Batting Average Calculator</h2>
+<p>Created By: Allison Rodenbaugh & Tanner Lillich</p>
+
+<div class="left">
+  <p>Hey batta, batta... </p>
+  <img src="baseball.jpg" alt="Image of baseball" style="width:100px;height:100px;">
+</div>
+
+<div class="main">
+  <p>Calculate your batting average based on your inputed number of hits and times at bat.
+    Use your mouse to slide the input bar, or tab to the inputs and use the number keys on your keyboard.
+    Make sure your number of hits is less than your total times at bat.
+  For number of hits, do not include sacrifices, walks, or hit by pitch.</p>
+
+  <table>
+    <tr>
+  <td>Number of Hits: </td><td><input id="hits" type="text" tabindex="0"><td></td>
+  <td><input type="range" min="1" max="1000" value="500" class="slider" id="numhits"></td>
+</tr><tr>
+  <td>Number of At Bats: </td><td><input  id="atbats" type="text" tabindex="0"><td></td>
+  <td><input type="range" min="1" max="1000" value="500" class="slider" id="numbats"></td>
+
+</tr>
+</table>
+
+<div style="padding-left: 60px;">
+  <button id="submit" accesskey="=">Calculate Batting Average</button>
+</div>
+</div>
+</div>
+
+<div class="right">
+  <p>SWING!</p>
+  <img src="bat.jpg" alt="Image of baseball bat" style="width:100px;height:130px;">
+</div>
+
+<script type="text/javascript">
+  function average(hits, atbats) {
+    return ((hits/atbats).toFixed(3));
+  }
+
+  document.getElementById("submit").onclick = function (){
+    var hits = document.getElementById("hits").value;
+    var atbats = document.getElementById("atbats").value;
+
+    alert("Your batting average is: " + average(hits, atbats));
+}
+</script>
+<script>
+var slider1 = document.getElementById("numbats");
+var slider2 = document.getElementById("numhits");
+
+slider1.oninput = function() {
+  document.getElementById("atbats").value = this.value;
+}
+slider2.oninput = function() {
+  document.getElementById("hits").value = this.value;
+}
+</script>
+</body>
+</html>
